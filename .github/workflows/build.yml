@@ -1,13 +1,11 @@
-name: Simple Local
-on: push
 jobs:
-   build-node:
-       runs-on: ubuntu-latest
-       container: node:20
-       steps:
-           - run: node --version
-           - run: npm --version
-           - uses: actions/checkout@v3
-           - run: npm install
-           - run: npm install --save moment
-           - run: node app.js
+  build-node:
+    runs-on: ubuntu-latest
+    container: node:20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Run tests
+        run: npm test
